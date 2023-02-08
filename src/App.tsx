@@ -1,10 +1,12 @@
+import Router from './router/index'
+
 
 function App() {
 
   return (
-    <div className="App">
-      <h1>bienvenidos al e-commerce</h1>
-    </div>
+      <div>
+        <Router/>
+      </div>
   )
 }
 
