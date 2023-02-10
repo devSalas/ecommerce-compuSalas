@@ -5,7 +5,17 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        'show-alert': 'show 3s linear infinite',
+      },
+      keyframes: {
+        show: {
+          '0%': { display: 'block' },
+          '100%': { display:'hidden' },
+        }
+      }
+    },
   },
   plugins: [],
 }
