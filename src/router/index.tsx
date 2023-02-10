@@ -1,5 +1,6 @@
 import React from 'react'
 import {Routes,Route} from 'react-router-dom'
+import Login from '../pages/login'
 import Signup from '../pages/signup/index'
 
 
@@ -11,6 +12,7 @@ export default function Router() {
     <div>
       <Routes>
         <Route path="/signup" element={<Signup/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
       </Routes>
     </div>
   )
