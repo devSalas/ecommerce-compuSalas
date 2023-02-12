@@ -3,6 +3,7 @@ import Anuncio from "../../components/home/Anuncios/Anuncio";
 import AnuncioMediano from "../../components/home/Anuncios/AnuncioMediano";
 import AnuncioGrande from "../../components/home/Anuncios/AnuncioGrande";
 import Categorias from "../../components/home/Categorias/Categorias";
+import Card from "../../components/home/Card";
 
 export default function index() {
   return (
@@ -23,7 +24,6 @@ export default function index() {
                 descuento="SUMER SALE 70%"
                 id="1"
                 price="192"
-                url=""
               />
             </div>
             <div className="flex lg:flex-col lg:w-96">
@@ -34,7 +34,6 @@ export default function index() {
                 description="audifonos inalambricos"
                 id="1"
                 price="192"
-                url=""
               />
               <Anuncio
                 title="AirPods"
@@ -43,15 +42,12 @@ export default function index() {
                 description="audifonos inalambricos"
                 id="1"
                 price="192"
-                url=""
               />
             </div>
           </article>
         </section>
 
         <main>
-          <section></section>
-
           <AnuncioGrande
             title="AirPods"
             image="https://lamanzanamordida.net/app/uploads-lamanzanamordida.net/2020/04/noname-34-1024x560.png"
@@ -60,8 +56,16 @@ export default function index() {
             descuento="SUMER SALE 70%"
             id="1"
             price="192"
-            url=""
           />
+          <Card
+            id="1"
+            image="https://lamanzanamordida.net/app/uploads-lamanzanamordida.net/2020/04/noname-34-1024x560.png"
+            title="audifonos"
+            category="accesorios"
+            price="1234"
+            description="lorem lorem lorem lorem lorem"
+          />
+          <div className="h-96"></div>
         </main>
       </main>
     </div>

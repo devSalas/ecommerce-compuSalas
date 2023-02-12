@@ -1,4 +1,4 @@
-import type { AnuncioMedianoInterface } from "./types";
+import type { CardInterface } from "./types";
 
 export default function Anuncio({
   id,
@@ -7,10 +7,9 @@ export default function Anuncio({
   price,
   image,
   descuento,
-  url,
-}: AnuncioMedianoInterface) {
+}: CardInterface) {
   return (
-    <figure className={`grid grid-cols-2 border h-96`}>
+    <figure className="grid grid-cols-2 border h-96">
       <div>
         <img className="" src={image} />
       </div>

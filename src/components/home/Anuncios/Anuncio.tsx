@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { AnuncioInterface } from "./types";
+import type { CardInterface } from "./types";
 
 export default function Anuncio({
   id,
@@ -11,8 +11,7 @@ export default function Anuncio({
   description,
   price,
   image,
-  url,
-}: AnuncioInterface) {
+}: CardInterface) {
   const [estilo, setEstilo] = useState(" h-full w-full");
 
   useEffect(() => {
