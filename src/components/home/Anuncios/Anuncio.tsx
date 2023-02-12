@@ -4,8 +4,6 @@ import type { CardInterface } from "./types";
 export default function Anuncio({
   id,
   vertical = false,
-  horizontal = false,
-  left = false,
   category,
   title,
   description,
@@ -16,13 +14,15 @@ export default function Anuncio({
 
   useEffect(() => {
     if (vertical) setEstilo("w-52 md:h-full h-96");
-    if (horizontal) setEstilo("w-full h-52");
   }, []);
 
   return (
     <figure className={`relative border ${estilo} aspect-video`}>
-      <img className="absolute top-0 left-0 -z-10" src={image} />
-      <div className="p-4 pb-8">
+      <img
+        className="absolute top-0 left-0 -z-10 object-cover w-full h-full"
+        src={image}
+      />
+      <div className="p-4 pb-8 bg-gradient-to-r h-full from-white to-transparent">
         <p className="text-sm text-sky-500">{category}</p>
         <h4 className="text-2xl font-bold">{title}</h4>
         <p className="text-sm text-neutral-600 mb-4">{description}</p>

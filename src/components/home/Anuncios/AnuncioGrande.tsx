@@ -9,10 +9,8 @@ export default function Anuncio({
   descuento,
 }: CardInterface) {
   return (
-    <figure className="grid grid-cols-2 border h-96">
-      <div>
-        <img className="" src={image} />
-      </div>
+    <figure className="grid grid-cols-2 aspect-video">
+      <img className="object-cover w-full h-full" src={image} />
       <div className="flex flex-col gap-4 p-8 border">
         <p className="text-sm bg-red-50 w-32 text-center p-1 rounded text-red-500">
           {descuento}

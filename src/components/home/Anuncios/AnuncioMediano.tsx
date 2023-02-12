@@ -12,7 +12,7 @@ export default function Anuncio({
   return (
     <figure className="relative border w-full h-full aspect-video">
       <img className="absolute top-0 left-0 -z-10" src={image} />
-      <div className="p-8 md:p-10">
+      <div className="p-8 md:p-10 h-full bg-gradient-to-r from-white to-transparent">
         <p className="text font-semibold text-red-500">{descuento}</p>
         <p className="text text-sky-500">{category}</p>
         <h4 className="text-4xl font-bold">{title}</h4>

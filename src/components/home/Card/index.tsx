@@ -10,7 +10,7 @@ export default function index({
   price,
 }: CardInterface) {
   return (
-    <figure className="flex flex-col gap-3 m-4 border w-52 p-3">
+    <figure className="flex flex-col gap-3 border p-3">
       <div className="aspect-square">
         <img
           className="bg-slate-100 w-full h-full object-contain"
