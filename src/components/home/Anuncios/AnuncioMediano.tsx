@@ -10,8 +10,9 @@ export default function Anuncio({
   descuento,
 }: CardInterface) {
   return (
-    <figure className="relative border">
-      <div className="absolute top-16 left-8 w-1/2">
+    <figure className="relative border w-full h-full aspect-video">
+      <img className="absolute top-0 left-0 -z-10" src={image} />
+      <div className="p-8 md:p-10">
         <p className="text font-semibold text-red-500">{descuento}</p>
         <p className="text text-sky-500">{category}</p>
         <h4 className="text-4xl font-bold">{title}</h4>
@@ -20,7 +21,6 @@ export default function Anuncio({
           SHOP NOW
         </a>
       </div>
-      <img className="" src={image} />
     </figure>
   );
 }

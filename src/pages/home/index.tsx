@@ -14,8 +14,8 @@ export default function index() {
           <aside className="">
             <Categorias />
           </aside>
-          <article className="lg:flex gap-4 p-4">
-            <div>
+          <article className="flex gap-4 p-4 flex-col lg:flex-row w-full">
+            <div className="w-full h-full">
               <AnuncioMediano
                 title="AirPods"
                 image="https://lamanzanamordida.net/app/uploads-lamanzanamordida.net/2020/04/noname-34-1024x560.png"
@@ -26,7 +26,7 @@ export default function index() {
                 price="192"
               />
             </div>
-            <div className="flex lg:flex-col lg:w-96">
+            <div className="flex lg:flex-col lg:w-96 gap-4">
               <Anuncio
                 title="AirPods"
                 image="https://lamanzanamordida.net/app/uploads-lamanzanamordida.net/2020/04/noname-34-1024x560.png"
@@ -47,7 +47,7 @@ export default function index() {
           </article>
         </section>
 
-        <main>
+        {/* <main>
           <AnuncioGrande
             title="AirPods"
             image="https://lamanzanamordida.net/app/uploads-lamanzanamordida.net/2020/04/noname-34-1024x560.png"
@@ -65,8 +65,7 @@ export default function index() {
             price="1234"
             description="lorem lorem lorem lorem lorem"
           />
-          <div className="h-96"></div>
-        </main>
+        </main> */}
       </main>
     </div>
   );

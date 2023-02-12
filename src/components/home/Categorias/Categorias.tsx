@@ -2,7 +2,7 @@ import "./Categorias.css";
 
 export default function Categorias() {
   return (
-    <div className=" w-64 ">
+    <div className=" w-64 hidden md:block">
       <nav className="">
         <h4 className="px-4 py-3 bg-red-500 text-white">Categorias</h4>
         <ul className="bg-white border">
