@@ -2,6 +2,8 @@ import Form from '../../components/login-signup/Form';
 import { useFetchCreateUser } from '../../services/query';
 import Navbar from '../../components/global/navbar';
 import { Navigate } from 'react-router-dom';
+import React from 'react';
+
 
 const interfaz ="signup"
 

@@ -64,7 +64,7 @@ export const useStore = create<TypeUseStore>((set) => ({
   deleteAllProducts:(id:string)=>set((state:any)=>({Products:[]})),
 
   subTotal : 0,
-  discount:0,
-  totalPrice:0
-
+  discount:20,
+  totalPrice:0,
+ 
 }))
