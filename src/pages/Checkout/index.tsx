@@ -1,6 +1,7 @@
 import Product from "../../components/chekout/Product"
 import { Product as TypeProduct } from "../../types/types"
 import { useStore } from "../../stores/productStore"
+import { Link } from "react-router-dom"
 const arrayPro:TypeProduct[] =[
     {
     _id:"1",
@@ -79,8 +80,12 @@ const Checkout = () => {
                           
                         </div>
                         <div className='flex flex-col gap-4'>
+                            <Link to='/payment'>
                             <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold"><i className="mdi mdi-lock-outline mr-1"></i> PAGAR AHORA</button>
+                            </Link>
+                            <Link to="/">
                             <button className="block w-full max-w-xs mx-auto bg-indigo-200 hover:bg-indigo-300 focus:bg-indigo-700 text-black/50 rounded-lg px-3 py-2 font-semibold"><i className="mdi mdi-lock-outline mr-1"></i> SEGUIR COMPRANDO</button>
+                            </Link>
                         </div>
 
                     </div>
