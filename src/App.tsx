@@ -1,12 +1,13 @@
-import Router from './router/index'
+import Header from "./components/global/Header";
+import Router from "./router/index";
 
-function App(){
-
+function App() {
   return (
-      <div>
-        <Router/>
-      </div>
-  )
+    <div>
+      <Header />
+      <Router />
+    </div>
+  );
 }
 
-export default App
+export default App;

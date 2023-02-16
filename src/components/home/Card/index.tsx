@@ -1,5 +1,6 @@
 import React from "react";
 import type { CardInterface } from "../Anuncios/types";
+import { Link } from "react-router-dom";
 
 export default function index({
   id,
@@ -21,8 +22,10 @@ export default function index({
       <div>
         <p className="text-sky-500 text-sm">{category}</p>
         <div className="flex justify-between mb-2">
-          <h4 className="font-semibold">{title}</h4>
-          <p className="text-red-500 font-semibold">${price}</p>
+          <Link to={`/${id}`}>
+            <h4 className="font-semibold">{title}</h4>
+          </Link>
+          <p className="text-red-500 font-semibold">S/ {price}</p>
         </div>
         <p className="text-sm text-neutral-500">{description}</p>
       </div>

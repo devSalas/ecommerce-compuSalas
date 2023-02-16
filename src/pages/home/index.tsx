@@ -9,7 +9,6 @@ import ProductosSection from "./ProductosSection";
 export default function index() {
   return (
     <div>
-      <Header />
       <main className="max-w-7xl m-auto px-4">
         <section className="grid md:grid-cols-4 gap-4 mt-4">
           <article>
