@@ -4,7 +4,7 @@ export interface CardInterface {
 	category?: string;
 	title: string;
 	description?: string;
-	price?: string;
+	price?: number;
 	image: string;
 	descuento?: string;
 }

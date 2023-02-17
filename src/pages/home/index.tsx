@@ -24,7 +24,7 @@ export default function index() {
                   description="audifonos inalambricos "
                   descuento="SUMER SALE 70%"
                   id="1"
-                  price="192"
+                  price={192}
                 />
               </article>
               <article className="flex lg:flex-col gap-4">
@@ -34,7 +34,7 @@ export default function index() {
                   category="accesorio"
                   description="audifonos inalambricos"
                   id="1"
-                  price="192"
+                  price={468}
                 />
                 <Anuncio
                   title="AirPods"
@@ -42,7 +42,7 @@ export default function index() {
                   category="accesorio"
                   description="audifonos inalambricos"
                   id="1"
-                  price="192"
+                  price={1215}
                 />
               </article>
             </section>
@@ -56,7 +56,7 @@ export default function index() {
               category="Gaminig"
               description="Consola de videojuego"
               descuento="10% Desc."
-              price="500"
+              price={1215}
             />
           </article>
           <article className="flex lg:flex-col gap-4">
@@ -65,14 +65,14 @@ export default function index() {
               image="https://www.apple.com/newsroom/images/product/iphone/standard/apple_iphone-12-spring21_purple_04202021_big.jpg.large.jpg"
               category="Telefonos"
               description="telefono"
-              price="1000"
+              price={15654}
             />
             <Anuncio
               title="Mando PS5"
               image="https://e.rpp-noticias.io/normal/2020/04/07/521952_924941.jpg"
               category="accesorio"
               description="mando de PlayStation 5"
-              price="110"
+              price={5478}
             />
           </article>
         </section>

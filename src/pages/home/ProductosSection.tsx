@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../../components/home/Card";
 import { useProducts } from "../../hooks/useProduct";
+import { Product } from "../../types/types";
 
 export default function ProductosSection() {
   const { data, isLoading, error } = useProducts();
@@ -8,13 +9,14 @@ export default function ProductosSection() {
   return (
     <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {data?.products?.map(
-        ({ _id, title, price, category, image_url, description }) => (
+        ({ _id, title, price, category, image_url, description }: Product) => (
           <Card
+            key={_id}
             id={_id}
             image={image_url}
             title={title}
             category={category}
-            price={price}
+            price={Number(price)}
             description={description}
           />
         )
