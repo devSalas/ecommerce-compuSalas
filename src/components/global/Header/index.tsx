@@ -1,37 +1,32 @@
-import React from 'react'
-import BtnCarrito from './BtnCarrito'
-import BtnMeGusta from './BtnMeGusta'
-import BtnSession from './BtnSession'
-import Buscador from './Buscador'
-
+import React from "react";
+import BtnCarrito from "./BtnCarrito";
+import BtnMeGusta from "./BtnMeGusta";
+import BtnSession from "./BtnSession";
+import Buscador from "./Buscador";
+import Logo from "./Logo";
 
 export default function Header() {
-
-  
   return (
     <>
-      <header className='flex items-center justify-between gap-8 md:p-8 p-4 border-b-2'>
+      <header className="flex items-center justify-between gap-8 md:p-8 p-4 border-b-2 sticky top-0 bg-white z-50">
+        <Logo />
 
-        <h2 className='text-2xl md:block hidden font-bold'>Compu<span className='text-blue-600'>Salas</span></h2>
+        <Buscador />
 
-        <Buscador/>
-
-        <section className='gap-8 md:flex hidden'>
+        <section className="gap-8 md:flex hidden">
           <BtnSession />
           <BtnMeGusta />
           <BtnCarrito />
         </section>
-
       </header>
 
-      <nav className='fixed md:hidden bottom-0 w-full h-16 flex items-center justify-center border bg-white'>
-        <section className='gap-8 flex'>
+      <nav className="fixed md:hidden bottom-0 w-full h-16 flex items-center justify-center border bg-white">
+        <section className="gap-8 flex">
           <BtnMeGusta />
           <BtnCarrito />
           <BtnSession />
         </section>
       </nav>
     </>
-    
-  )
+  );
 }
