@@ -8,7 +8,7 @@ import Logo from "./Logo";
 export default function Header() {
   return (
     <>
-      <header className="flex items-center justify-between gap-8 md:p-8 p-4 border-b-2">
+      <header className="flex items-center justify-between gap-8 md:p-8 p-4 border-b-2 sticky top-0 bg-white z-50">
         <Logo />
 
         <Buscador />
