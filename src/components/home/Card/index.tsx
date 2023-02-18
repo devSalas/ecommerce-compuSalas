@@ -22,7 +22,7 @@ export default function index({
       <div>
         <p className="text-sky-500 text-sm">{category}</p>
         <div className="flex justify-between mb-2">
-          <Link to={`/${id}`}>
+          <Link to={`/product/${id}`}>
             <h4 className="font-semibold">{title}</h4>
           </Link>
           <p className="text-red-500 font-semibold">S/ {price}</p>

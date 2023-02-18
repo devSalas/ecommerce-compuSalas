@@ -20,9 +20,9 @@ export default function Router() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/test" element={<Test />}></Route>
         <Route path="/payment" element={<FormPayment />}></Route>
-        <Route path="/:id" element={<Product />}></Route>
-        <Route path="*" element={<Error/>}></Route>
-        <Route path="/error" element={<Error/>}></Route>
+        <Route path="/product/:id" element={<Product />}></Route>
+        <Route path="*" element={<Error />}></Route>
+        <Route path="/error" element={<Error />}></Route>
       </Routes>
     </div>
   );

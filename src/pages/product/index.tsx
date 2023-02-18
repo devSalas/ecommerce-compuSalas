@@ -18,7 +18,7 @@ export default function index() {
   if (isLoading) return <h2>cargando...</h2>;
   return (
     <div className="max-w-7xl m-auto">
-      <section className="grid md:grid-cols-2">
+      <section className="grid md:grid-cols-2 mt-8">
         <article className="border flex justify-center p-8">
           <Image src={data?.image_url} />
         </article>

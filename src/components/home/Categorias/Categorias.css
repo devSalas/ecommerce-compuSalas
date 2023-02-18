@@ -4,7 +4,7 @@ nav li a {
 
 nav li {
   position: relative;
-  z-index: 100;
+  z-index: 40;
 }
 
 nav li ul {
