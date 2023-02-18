@@ -5,6 +5,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import ArrowBack from "../../components/global/arrow-back";
 import { Link } from "react-router-dom";
+import { useStore } from "../../stores/productStore";
 
 
 const stripePromise = loadStripe("pk_test_51MNjItANEHdq6jhMvuGZgom8AY43AkKlYRRbEgOv94vpes2BZtGkq4wyeh5nZ7shYqRERTcQ2KclbBwxHs2ba4sR00IdtXhx9b");
@@ -13,14 +14,16 @@ const priceTotalrounded=4000
 const products=[{name:"cuaderno"},{name:"letra"}]
 
 export default function FormPayment() {
+  const store = useStore()
   const [clientSecret, setClientSecret] = useState("");
+  const {totalPrice,Products} = store
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     fetch("http://localhost:4000/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({products,priceTotalrounded}),
+      body: JSON.stringify({totalPrice,Products}),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
@@ -60,9 +63,9 @@ export default function FormPayment() {
                 <p><strong>Total</strong></p>
               </div>
               <div>
-              <p>s/400</p>
-              <p>s/100</p>
-              <p>s/300</p>
+              <p>s/{store.subTotal}</p>
+              <p>Gratis</p>
+              <p>s/{store.totalPrice}</p>
               </div>
             </div>
           </div>

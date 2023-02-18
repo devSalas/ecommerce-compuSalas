@@ -8,15 +8,12 @@ export const useStore = create<TypeUseStore>((set) => ({
 	deleteOneProduct: (id: string) =>
 		set((state) => ({
 			Products: state.Products.filter((product: Product) => {
-				if (product._id === id) state.subTotal -= product.totalPrice;
+				if(product.totalPrice){
+					if (product._id === id) state.subTotal -= product.totalPrice;
+				}
 				return product._id !== id;
 			}),
 		})),
-
-	/*   deleteOneProduct:(id:string)=>set(state=>{
-  
-    return {}
-  }), */
 
 	addOneProduct: (newProduct: Product) =>
 		set((state) => {
@@ -28,16 +25,28 @@ export const useStore = create<TypeUseStore>((set) => ({
 			if (isAddedProduct === undefined) {
 				newProduct.cantidad = 1;
 				newProduct.totalPrice = newProduct.price;
+				newProduct.totalPrice = Number(newProduct.totalPrice);
+
 				copyProducts.push(newProduct);
 				state.subTotal += newProduct.price;
+				state.redondearPriceSubTotal()
+				state.calcularTotalPrice()
 				return { Products: copyProducts };
 			}
 
 			let incrementProduct = copyProducts.map((product) => {
 				if (product._id === newProduct._id) {
+
+					if(product.cantidad=== undefined || product.totalPrice === undefined) return product;
+				
 					product.cantidad += 1;
-					newProduct.totalPrice += newProduct.price;
+
+					product.totalPrice +=newProduct.price;
+					product.totalPrice = Number(newProduct.totalPrice?.toFixed(2));
+					/* agregar precio del producto al estado subtotal, luego asigno al subtotal, el subtotal pero redondeado */
 					state.subTotal += newProduct.price;
+					state.redondearPriceSubTotal()
+					state.calcularTotalPrice()
 				}
 				return product;
 			});
@@ -47,17 +56,27 @@ export const useStore = create<TypeUseStore>((set) => ({
 		set((state) => {
 			let decrementProduct = state.Products.map((product) => {
 				if (product._id === newProduct._id) {
+
+					if(product.cantidad=== undefined || product.totalPrice === undefined) return product;
+
 					if (product.cantidad > 1) {
 						product.cantidad -= 1;
 						product.totalPrice -= product.price;
+						product.totalPrice = Number(newProduct.totalPrice?.toFixed(2));
 						state.subTotal -= newProduct.price;
+						state.redondearPriceSubTotal()
+						state.calcularTotalPrice()
 					}
 				}
 				return product;
 			});
 			return { Products: decrementProduct };
 		}),
-	deleteAllProducts: (id: string) => set((state: any) => ({ Products: [] })),
+	deleteAllProducts: (id: string) => set((state) => ({ Products: [] })),
+
+	redondearPriceSubTotal: () => set((state) =>({subTotal:Number(state.subTotal.toFixed(2))})),
+	
+	calcularTotalPrice:()=>set((state) =>({totalPrice:state.subTotal})),
 
 	subTotal: 0,
 	discount: 20,

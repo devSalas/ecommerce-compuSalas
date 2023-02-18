@@ -1,7 +1,7 @@
 import Form from '../../components/login-signup/Form';
 import { useFetchCreateUser } from '../../services/query';
 import Navbar from '../../components/global/navbar';
-import { Navigate } from 'react-router-dom';
+import { Navigate, redirect } from 'react-router-dom';
 import React from 'react';
 
 
@@ -10,9 +10,12 @@ const interfaz ="signup"
 const Signup=()=> {
 
   const {mutate,isLoading,isSuccess,data} = useFetchCreateUser();
-
-  if(isSuccess && data?.status === 'ok') return <Navigate to="/login" replace={true}/>
-
+  console.log(data)
+  if(isSuccess && data?.status === 'ok'){ 
+    console.log("entro signup")
+    return <Navigate to="/login" replace={true} />
+    
+  }
 
   return(
     <div>
