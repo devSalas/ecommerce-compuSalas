@@ -5,6 +5,8 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
+import Confetti from '../../components/confetti.js'
+import { Navigate } from "react-router-dom";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -49,22 +51,38 @@ export default function CheckoutForm() {
     e.preventDefault();
     if (!stripe || !elements) return;
 
-    setIsLoading(true);
-
-    const { error } = await stripe.confirmPayment({
+    
+    console.log("entro1")
+    const { paymentIntent,error} = await stripe.confirmPayment({
       elements,
       confirmParams: {
         return_url: `${location.origin}`,
       },
+      redirect:'if_required'
     });
+    
 
-    if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message || "hola");
-    } else {
-      setMessage("An unexpected error occurred.");
+    console.log({paymentIntent,error})
+
+    const a =()=><Navigate to="/" replace={true}/>
+
+    if(error!==undefined){
+      if (error.type === "card_error" || error.type === "validation_error") {
+        if(error.message) setMessage(error.message);
+      } else {
+        setMessage("An unexpected error occurred.");
+      }
+
+    }else{
+      if(paymentIntent.status ==="succeeded"){
+        /* Confetti() */
+        console.log("succed")
+       return  a()
+      }
     }
 
     setIsLoading(false);
+    
   };
 
   const paymentElementOptions = {

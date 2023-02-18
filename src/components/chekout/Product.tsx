@@ -33,7 +33,7 @@ const store = useStore()
                   <button onClick={handleClickDisminuir} className="font-semibold text-xl px-2">-</button>
               </div>
               <div>
-              <span className="font-semibold text-gray-600 text-xl">{product.totalPrice}</span><span className="font-semibold text-gray-600 text-sm">.00</span>
+              <span className="font-semibold text-gray-600 text-xl">{product.totalPrice}</span>
               </div>
               <div onClick={handleClickDeleteOneProduct}>
                 X

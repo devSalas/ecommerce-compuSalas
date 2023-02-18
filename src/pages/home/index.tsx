@@ -5,8 +5,23 @@ import AnuncioGrande from "../../components/home/Anuncios/AnuncioGrande";
 import Categorias from "../../components/home/Categorias/Categorias";
 import Card from "../../components/home/Card";
 import ProductosSection from "./ProductosSection";
+import { useEffect } from "react";
+import Confetti from '../../components/Confetti.js'
 
 export default function index() {
+
+  useEffect(()=>{
+    const isConfetti = localStorage.getItem('confetti')
+    if(isConfetti =="true"){
+      Confetti()
+
+      return(()=>{
+        localStorage.setItem('confetti','false')
+      })
+    }
+  },[])
+
+
   return (
     <div>
       <main className="max-w-7xl m-auto px-4">

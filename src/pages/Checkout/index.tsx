@@ -2,39 +2,15 @@ import Product from "../../components/chekout/Product";
 import { Product as TypeProduct } from "../../types/types";
 import { useStore } from "../../stores/productStore";
 import { Link } from "react-router-dom";
-const arrayPro: TypeProduct[] = [
-  {
-    _id: "1",
-    title: "chompa",
-    price: 20,
-    description: "hodfdfdfd",
-    category: "futbol",
-    image_url: "http://placeimg.com/80/80/tech",
-    stock: 3,
-    cantidad: 1,
-  },
-  {
-    _id: "2",
-    title: "pantalon",
-    price: 40,
-    description: "pantalon crazy",
-    category: "close",
-    image_url: "http://placeimg.com/80/80/tech",
-    stock: 3,
-    cantidad: 1,
-  },
-];
 
 const Checkout = () => {
   const store = useStore();
 
-  const handleClickAgregarProducts = () => {
-    arrayPro.forEach((product) => {
-      store.addOneProduct(product);
-    });
-  };
-
   console.log(store.Products.length);
+
+  const test=()=>{
+    console.log(store.totalPrice)
+  }
 
   return (
     <>
@@ -56,7 +32,7 @@ const Checkout = () => {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6 flex justify-between p-4 ">
                   <div className="flex flex-col">
                     <span>Subtotal</span>
-                    <span>Descuento</span>
+                    {/* <span>Descuento</span> */}
                     <span>Envío</span>
                     <span>
                       <strong>Total</strong>{" "}
@@ -64,16 +40,16 @@ const Checkout = () => {
                   </div>
                   <div className="flex flex-col text-end">
                     <span>{store.subTotal}</span>
-                    <span>s/23434</span>
+                    {/* <span>s/23434</span> */}
                     <span>Gratis</span>
                     <span>
-                      <strong>s/1,650.92</strong>
+                      <strong>{store.totalPrice}</strong>
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-col gap-4 ">
                   <Link to="/payment">
-                    <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold">
+                    <button onClick={test} className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold">
                       <i className="mdi mdi-lock-outline mr-1"></i> PAGAR AHORA
                     </button>
                   </Link>
