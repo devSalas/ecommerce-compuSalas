@@ -8,17 +8,19 @@ export default function BtnCarrito() {
   const store = useStore();
 
   return (
-    <Link to={"/checkout"}>
-      <button className="flex items-center gap-6">
-        <div className="relative">
+    <button className="flex items-center gap-6">
+      <div className="relative">
+        <Link to={"/checkout"}>
           <Carrito />
           <Contador numero={store.Products.length} />
-        </div>
-        <div className="text-left md:block hidden">
+        </Link>
+      </div>
+      <div className="text-left md:block hidden">
+        <Link to={"/checkout"}>
           <p className="text-slate-500 text-sm">Total</p>
           <p className="font-semibold">$0.00</p>
-        </div>
-      </button>
-    </Link>
+        </Link>
+      </div>
+    </button>
   );
 }

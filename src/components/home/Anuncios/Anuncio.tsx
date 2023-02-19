@@ -17,9 +17,9 @@ export default function Anuncio({
   }, []);
 
   return (
-    <figure className={`relative border ${estilo} aspect-video`}>
+    <figure className={`relative -z-50 border ${estilo} aspect-video`}>
       <img
-        className="absolute top-0 left-0 -z-10 object-cover w-full h-full"
+        className="absolute -z-40 top-0 left-0 object-cover w-full h-full"
         src={image}
       />
       <div className="p-4 pb-8 bg-gradient-to-r h-full from-white to-transparent">

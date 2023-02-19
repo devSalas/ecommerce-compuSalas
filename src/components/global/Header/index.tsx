@@ -1,6 +1,5 @@
-import React from "react";
 import BtnCarrito from "./BtnCarrito";
-import BtnMeGusta from "./BtnMeGusta";
+import BtnHome from "./BtnHome";
 import BtnSession from "./BtnSession";
 import Buscador from "./Buscador";
 import Logo from "./Logo";
@@ -15,14 +14,13 @@ export default function Header() {
 
         <section className="gap-8 md:flex hidden">
           <BtnSession />
-          <BtnMeGusta />
           <BtnCarrito />
         </section>
       </header>
 
       <nav className="fixed md:hidden bottom-0 w-full h-16 flex items-center justify-center border bg-white">
         <section className="gap-8 flex">
-          <BtnMeGusta />
+          <BtnHome />
           <BtnCarrito />
           <BtnSession />
         </section>
