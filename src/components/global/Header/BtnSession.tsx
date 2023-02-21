@@ -21,7 +21,7 @@ export default function BtnSession() {
           <Link to={"/login"}>
             <button className="p-3 w-full hover:bg-sky-200">Login</button>
           </Link>
-          <Link to={"/signup"}>
+          <Link to={"/signin"}>
             <button className="p-3 w-full hover:bg-sky-200">Signin</button>
           </Link>
           <button className="p-3 w-full hover:bg-red-200">Logout</button>
