@@ -6,21 +6,19 @@ import Categorias from "../../components/home/Categorias/Categorias";
 import Card from "../../components/home/Card";
 import ProductosSection from "./ProductosSection";
 import { useEffect } from "react";
-import Confetti from '../../components/Confetti.js'
+import Confetti from "../../components/confetti.js";
 
 export default function index() {
+  useEffect(() => {
+    const isConfetti = localStorage.getItem("confetti");
+    if (isConfetti == "true") {
+      Confetti();
 
-  useEffect(()=>{
-    const isConfetti = localStorage.getItem('confetti')
-    if(isConfetti =="true"){
-      Confetti()
-
-      return(()=>{
-        localStorage.setItem('confetti','false')
-      })
+      return () => {
+        localStorage.setItem("confetti", "false");
+      };
     }
-  },[])
-
+  }, []);
 
   return (
     <div>

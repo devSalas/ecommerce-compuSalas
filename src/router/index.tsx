@@ -18,7 +18,6 @@ export default function Router() {
         <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/test" element={<Test />}></Route>
         <Route path="/payment" element={<FormPayment />}></Route>
         <Route path="/product/:id" element={<Product />}></Route>
         <Route path="*" element={<Error />}></Route>

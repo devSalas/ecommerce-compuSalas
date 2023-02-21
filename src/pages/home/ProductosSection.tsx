@@ -5,9 +5,10 @@ import { Product } from "../../types/types";
 
 export default function ProductosSection() {
   const { data, isLoading, error } = useProducts();
-  console.log(data)
+  console.log(data);
   return (
     <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <h2></h2>
       {data?.products?.map(
         ({ _id, title, price, category, image_url, description }: Product) => (
           <Card

@@ -6,7 +6,7 @@ export default function Image({ src }: { src: string }) {
     y: 0,
   });
 
-  const handleMove = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+  const handleMove = (e: any) => {
     const w = e.target.width;
     const h = e.target.height;
 
