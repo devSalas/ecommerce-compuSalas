@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { createPortal } from 'react-dom';
+
 import {
   PaymentElement,
   LinkAuthenticationElement,
@@ -6,15 +8,20 @@ import {
   useElements
 } from "@stripe/react-stripe-js";
 import Confetti from '../../components/confetti.js'
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate(); 
+  
+
+
 
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean | undefined>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
     if (!stripe) {
@@ -51,8 +58,6 @@ export default function CheckoutForm() {
     e.preventDefault();
     if (!stripe || !elements) return;
 
-    
-    console.log("entro1")
     const { paymentIntent,error} = await stripe.confirmPayment({
       elements,
       confirmParams: {
@@ -64,7 +69,6 @@ export default function CheckoutForm() {
 
     console.log({paymentIntent,error})
 
-    const a =()=><Navigate to="/" replace={true}/>
 
     if(error!==undefined){
       if (error.type === "card_error" || error.type === "validation_error") {
@@ -75,15 +79,25 @@ export default function CheckoutForm() {
 
     }else{
       if(paymentIntent.status ==="succeeded"){
-        /* Confetti() */
-        console.log("succed")
-       return  a()
+        setShowModal(true)
+        Confetti()
+
       }
     }
 
     setIsLoading(false);
     
   };
+
+
+  const handleAceptar = (e: any) => {
+    setTimeout(()=>{
+    navigate("/")
+    },500)
+  }
+
+  const handleDeleteChat = (e:any)=> {}
+
 
   const paymentElementOptions = {
     layout: "tabs"
@@ -104,7 +118,27 @@ export default function CheckoutForm() {
         </button>
         {/* Show any error or success messages */}
         {message && <div id="payment-message">{message}</div>}
+        <div className=" w-screen h-screen">
+          {showModal && createPortal(
+          <div className="fixed z-10 inset-0 flex justify-center items-center backdrop-brightness-50 ">
+            <div className="max-w-md  m-2  bg-slate-700 shadow-lg shadow-slate-500/50 rounded-sm p-4 text-white flex flex-col sm:gap-2">
+              <p className="text-lg sm:text-xl">Felicitación, compra exitosa!!!</p>
+              <p className="text-sm text-slate-500 sm:text-base">
+                ahora estaremos procesando su solicitud, y en el tiempo establecido, el producto llegara a su hogar.😎🎉
+              </p>
+              <div className="flex justify-end gap-4 mt-4">
+            
+              <button onClick={handleAceptar} className="bg-blue-500   p-2 px-4 rounded-md">Aceptar</button>
+              </div>
+            </div>
+          </div>,
+            document.getElementById("modal-mensaje")
+          )}
+        </div>
+
+
       </form>
+
    /*  </div> */
   );
 }

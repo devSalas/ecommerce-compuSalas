@@ -20,13 +20,15 @@ export default function FormPayment() {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:4000/create-payment-intent", {
+    fetch("https://ecomerce-backend-wo0w.onrender.com/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({totalPrice,Products}),
     })
       .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
+      .then((data) =>{
+        console.log(data)
+        return setClientSecret(data.clientSecret)});
   }, []);
 
   const appearance = {
