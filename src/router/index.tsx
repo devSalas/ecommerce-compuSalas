@@ -1,9 +1,8 @@
 import Checkout from "../pages/Checkout/index";
-import Signup from "../pages/signup/index";
+import Signin from "../pages/signin/index";
 import Home from "../pages/home";
 import { Route, Routes } from "react-router-dom";
 import Login from "../pages/login";
-import Test from "../pages/test";
 import FormPayment from "../pages/Payment/FormPayment";
 import Product from "../pages/product";
 import Error from "../pages/Error";
@@ -16,9 +15,8 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/checkout" element={<Checkout />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/signin" element={<Signin />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/test" element={<Test />}></Route>
         <Route path="/payment" element={<FormPayment />}></Route>
         <Route path="/product/:id" element={<Product />}></Route>
         <Route path="*" element={<Error />}></Route>

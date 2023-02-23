@@ -5,7 +5,7 @@ import {
   PaymentElement,
   LinkAuthenticationElement,
   useStripe,
-  useElements
+  useElements,
 } from "@stripe/react-stripe-js";
 import Confetti from '../../components/confetti.js'
 import { useNavigate } from "react-router-dom";
@@ -18,8 +18,8 @@ export default function CheckoutForm() {
 
 
 
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState<string>('');
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean | undefined>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -37,7 +37,7 @@ export default function CheckoutForm() {
     }
 
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-     /*  switch (paymentIntent.status) {
+      /*  switch (paymentIntent.status) {
         case "succeeded":
           setMessage("Payment succeeded!");
           break;
@@ -54,7 +54,7 @@ export default function CheckoutForm() {
     });
   }, [stripe]);
 
-  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!stripe || !elements) return;
 
@@ -63,16 +63,15 @@ export default function CheckoutForm() {
       confirmParams: {
         return_url: `${location.origin}`,
       },
-      redirect:'if_required'
+      redirect: "if_required",
     });
-    
 
-    console.log({paymentIntent,error})
+    console.log({ paymentIntent, error });
 
 
-    if(error!==undefined){
+    if (error !== undefined) {
       if (error.type === "card_error" || error.type === "validation_error") {
-        if(error.message) setMessage(error.message);
+        if (error.message) setMessage(error.message);
       } else {
         setMessage("An unexpected error occurred.");
       }
@@ -86,7 +85,6 @@ export default function CheckoutForm() {
     }
 
     setIsLoading(false);
-    
   };
 
 
@@ -100,8 +98,8 @@ export default function CheckoutForm() {
 
 
   const paymentElementOptions = {
-    layout: "tabs"
-  }
+    layout: "tabs",
+  };
 
   return (
    /*  <div className="bg-white col-span-2 h-full"> */
