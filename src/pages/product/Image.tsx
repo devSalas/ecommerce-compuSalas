@@ -23,9 +23,9 @@ export default function Image({ src }: { src: string }) {
   };
 
   return (
-    <div className="flex ">
-      <img onMouseMove={handleMove} className="border " src={src} />
-      <div className=" border relative overflow-hidden w-32 h-32">
+    <div className="flex">
+      <img onMouseMove={handleMove} className="border" src={src} />
+      <div className=" border relative overflow-hidden w-60 h-60">
         <img
           className="absolute"
           style={{

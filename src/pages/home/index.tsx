@@ -4,7 +4,7 @@ import AnuncioMediano from "../../components/home/Anuncios/AnuncioMediano";
 import AnuncioGrande from "../../components/home/Anuncios/AnuncioGrande";
 import Categorias from "../../components/home/Categorias/Categorias";
 import Card from "../../components/home/Card";
-import ProductosSection from "./ProductosSection";
+import ListaProductos from "./ListaProductos";
 import { useEffect } from "react";
 import Confetti from "../../components/confetti.js";
 
@@ -90,7 +90,10 @@ export default function index() {
           </article>
         </section>
         <section className="mt-4">
-          <ProductosSection />
+          <div>
+            <h2 className="text-xl py-4">productos</h2>
+          </div>
+          <ListaProductos />
         </section>
       </main>
     </div>

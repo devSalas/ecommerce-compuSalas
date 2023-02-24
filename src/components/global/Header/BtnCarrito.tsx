@@ -12,7 +12,9 @@ export default function BtnCarrito() {
       <div className="relative">
         <Link to={"/checkout"}>
           <Carrito />
-          <Contador numero={store.Products.length} />
+          {store.Products.length > 0 ? (
+            <Contador numero={store.Products.length} />
+          ) : null}
         </Link>
       </div>
       <div className="text-left md:block hidden">
