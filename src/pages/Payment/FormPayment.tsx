@@ -32,11 +32,11 @@ export default function FormPayment() {
   }, []);
 
   const appearance = {
-    theme: 'stripe',
+    theme: "stripe"
   };
   const options = {
     clientSecret,
-    appearance,
+    appearance:{theme:undefined},
   };
 
   return (

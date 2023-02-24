@@ -72,7 +72,7 @@ export const useStore = create<TypeUseStore>((set) => ({
 			});
 			return { Products: decrementProduct };
 		}),
-	deleteAllProducts: (id: string) => set((state) => ({ Products: [] })),
+	deleteAllProducts: () => set(() => ({ Products: [],subTotal:0,totalPrice:0 })),
 
 	redondearPriceSubTotal: () => set((state) =>({subTotal:Number(state.subTotal.toFixed(2))})),
 	

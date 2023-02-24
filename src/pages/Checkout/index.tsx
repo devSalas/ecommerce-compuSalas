@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 const Checkout = () => {
   const store = useStore();
 
-  console.log(store.Products.length);
-
   const test=()=>{
     console.log(store.totalPrice)
   }

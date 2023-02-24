@@ -15,7 +15,7 @@ export interface TypeUseStore {
 
 	deleteOneProduct: (id: string) => void;
 	addOneProduct: (product: Product) => void;
-	deleteAllProducts: (id: string) => void;
+	deleteAllProducts: () => void;
 	reduceProductQuantity: (product: Product) => void;
 	redondearPriceSubTotal:()=>void;
 	calcularTotalPrice:()=>void;

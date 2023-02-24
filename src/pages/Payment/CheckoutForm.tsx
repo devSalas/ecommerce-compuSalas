@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-
+import { useStore } from '../../stores/productStore';
 import {
   PaymentElement,
   LinkAuthenticationElement,
   useStripe,
   useElements,
-} from "@stripe/react-stripe-js";
-import Confetti from '../../components/confetti.js'
-import { useNavigate } from "react-router-dom";
+} from '@stripe/react-stripe-js';
+import Confetti from '../../components/confetti';
+import { useNavigate } from 'react-router-dom';
 
 export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
-  const navigate = useNavigate(); 
-  
+  const navigate = useNavigate();
+  const store = useStore();
 
-
-
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState<string>("");
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean | undefined>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -29,7 +27,7 @@ export default function CheckoutForm() {
     }
 
     const clientSecret = new URLSearchParams(window.location.search).get(
-      "payment_intent_client_secret"
+      'payment_intent_client_secret'
     );
 
     if (!clientSecret) {
@@ -37,7 +35,8 @@ export default function CheckoutForm() {
     }
 
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-      /*  switch (paymentIntent.status) {
+
+       switch (paymentIntent!.status) {
         case "succeeded":
           setMessage("Payment succeeded!");
           break;
@@ -50,7 +49,7 @@ export default function CheckoutForm() {
         default:
           setMessage("Something went wrong.");
           break;
-      } */
+      }
     });
   }, [stripe]);
 
@@ -58,85 +57,94 @@ export default function CheckoutForm() {
     e.preventDefault();
     if (!stripe || !elements) return;
 
-    const { paymentIntent,error} = await stripe.confirmPayment({
+    const { paymentIntent, error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         return_url: `${location.origin}`,
       },
-      redirect: "if_required",
+      redirect: 'if_required',
     });
 
     console.log({ paymentIntent, error });
 
-
     if (error !== undefined) {
-      if (error.type === "card_error" || error.type === "validation_error") {
+      if (error.type === 'card_error' || error.type === 'validation_error') {
         if (error.message) setMessage(error.message);
       } else {
-        setMessage("An unexpected error occurred.");
+        setMessage('An unexpected error occurred.');
       }
-
-    }else{
-      if(paymentIntent.status ==="succeeded"){
-        setShowModal(true)
-        Confetti()
-
+    } else {
+      if (paymentIntent.status === 'succeeded') {
+        
+        setShowModal(true);
+        Confetti();
+        store.deleteAllProducts()
+        
       }
     }
 
     setIsLoading(false);
   };
 
-
-  const handleAceptar = (e: any) => {
-    setTimeout(()=>{
-    navigate("/")
-    },500)
-  }
-
-  const handleDeleteChat = (e:any)=> {}
-
-
-  const paymentElementOptions = {
-    layout: "tabs",
+  const handleAceptar = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setTimeout(() => {
+      navigate('/');
+    }, 500);
   };
 
+/*   const handleDeleteChat = (e: any) => {}; */
+
+
+
   return (
-   /*  <div className="bg-white col-span-2 h-full"> */
-      <form id="payment-form" onSubmit={handleSubmit} className="max-w-2xl h-full m-auto my-4 ">
-        <LinkAuthenticationElement
-          id="link-authentication-element"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <PaymentElement id="payment-element" options={paymentElementOptions} />
-        <button disabled={isLoading || !stripe || !elements} id="submit" className="w-full bg-blue-700 mt-4 py-3 text-white font-semibold text-xl rounded-md">
-          <span id="button-text">
-            {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-          </span>
-        </button>
-        {/* Show any error or success messages */}
-        {message && <div id="payment-message">{message}</div>}
-        <div className=" w-screen h-screen">
-          {showModal && createPortal(
-          <div className="fixed z-10 inset-0 flex justify-center items-center backdrop-brightness-50 ">
-            <div className="max-w-md  m-2  bg-slate-700 shadow-lg shadow-slate-500/50 rounded-sm p-4 text-white flex flex-col sm:gap-2">
-              <p className="text-lg sm:text-xl">Felicitación, compra exitosa!!!</p>
-              <p className="text-sm text-slate-500 sm:text-base">
-                ahora estaremos procesando su solicitud, y en el tiempo establecido, el producto llegara a su hogar.😎🎉
-              </p>
-              <div className="flex justify-end gap-4 mt-4">
-            
-              <button onClick={handleAceptar} className="bg-blue-500   p-2 px-4 rounded-md">Aceptar</button>
+    /*  <div className="bg-white col-span-2 h-full"> */
+    <form
+      id="payment-form"
+      onSubmit={handleSubmit}
+      className="max-w-2xl h-full m-auto my-4 "
+    >
+      <LinkAuthenticationElement
+        id="link-authentication-element"
+      />
+      <PaymentElement id="payment-element" options={{layout:'tabs'}} />
+      <button
+        disabled={isLoading || !stripe || !elements}
+        id="submit"
+        className="w-full bg-blue-700 mt-4 py-3 text-white font-semibold text-xl rounded-md"
+      >
+        <span id="button-text">
+          {isLoading ? <div className="spinner" id="spinner"></div> : 'Pay now'}
+        </span>
+      </button>
+      {/* Show any error or success messages */}
+      {message && <div id="payment-message">{message}</div>}
+      <div className=" w-screen h-screen">
+        {showModal &&
+          createPortal(
+            <div className="fixed z-10 inset-0 flex justify-center items-center backdrop-brightness-50 ">
+              <div className="max-w-md  m-2  bg-slate-700 shadow-lg shadow-slate-500/50 rounded-sm p-4 text-white flex flex-col sm:gap-2">
+                <p className="text-lg sm:text-xl">
+                  Felicitación, compra exitosa!!!
+                </p>
+                <p className="text-sm text-slate-500 sm:text-base">
+                  ahora estaremos procesando su solicitud, y en el tiempo
+                  establecido, el producto llegara a su hogar.😎🎉
+                </p>
+                <div className="flex justify-end gap-4 mt-4">
+                  <button
+                    onClick={handleAceptar}
+                    className="bg-blue-500   p-2 px-4 rounded-md"
+                  >
+                    Aceptar
+                  </button>
+                </div>
               </div>
-            </div>
-          </div>,
-            document.getElementById("modal-mensaje")
+            </div>,
+            document.getElementById('modal-mensaje')!
           )}
-        </div>
+      </div>
+    </form>
 
-
-      </form>
-
-   /*  </div> */
+    /*  </div> */
   );
 }
