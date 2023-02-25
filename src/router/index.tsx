@@ -6,6 +6,7 @@ import Login from "../pages/login";
 import FormPayment from "../pages/Payment/FormPayment";
 import Product from "../pages/product";
 import Error from "../pages/Error";
+import Products from "../pages/Products";
 
 /* components */
 
@@ -21,6 +22,7 @@ export default function Router() {
         <Route path="/product/:id" element={<Product />}></Route>
         <Route path="*" element={<Error />}></Route>
         <Route path="/error" element={<Error />}></Route>
+        <Route path="/products" element={<Products />}></Route>
       </Routes>
     </div>
   );
