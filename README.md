@@ -32,9 +32,7 @@ La página principal de Compusalas cuenta con una interfaz fácil de usar que mu
 
 ## Instalación
 
-Install my-project with npm
-
-```bash
-  npm install my-project
-  cd my-project
-```
+- Descárgate el repositorio
+- Necesitarás tener instalado npm y node
+- Sitúate en la raiz del proyecto e instala las dependencias: `npm install --y`
+- Ejecuta este comando para arrancar la aplicación: `npm start`
