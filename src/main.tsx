@@ -4,6 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
+import "@fontsource/alata";
 import "./index.css";
 
 const queryClient = new QueryClient();

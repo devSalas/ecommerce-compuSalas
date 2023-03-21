@@ -4,11 +4,11 @@ import Router from "./router/index";
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
       <Router />
       <Footer />
-    </div>
+    </>
   );
 }
 

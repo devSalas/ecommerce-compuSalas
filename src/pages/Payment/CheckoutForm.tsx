@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { useStore } from '../../stores/productStore';
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { useStore } from "../../stores/productStore";
 import {
   PaymentElement,
   LinkAuthenticationElement,
   useStripe,
   useElements,
-} from '@stripe/react-stripe-js';
-import Confetti from '../../components/confetti';
-import { useNavigate } from 'react-router-dom';
+} from "@stripe/react-stripe-js";
+import Confetti from "../../components/confetti";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -16,8 +16,8 @@ export default function CheckoutForm() {
   const navigate = useNavigate();
   const store = useStore();
 
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState<string>('');
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean | undefined>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -27,7 +27,7 @@ export default function CheckoutForm() {
     }
 
     const clientSecret = new URLSearchParams(window.location.search).get(
-      'payment_intent_client_secret'
+      "payment_intent_client_secret"
     );
 
     if (!clientSecret) {
@@ -35,8 +35,7 @@ export default function CheckoutForm() {
     }
 
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-
-       switch (paymentIntent!.status) {
+      switch (paymentIntent!.status) {
         case "succeeded":
           setMessage("Payment succeeded!");
           break;
@@ -62,58 +61,51 @@ export default function CheckoutForm() {
       confirmParams: {
         return_url: `${location.origin}`,
       },
-      redirect: 'if_required',
+      redirect: "if_required",
     });
 
     console.log({ paymentIntent, error });
 
     if (error !== undefined) {
-      if (error.type === 'card_error' || error.type === 'validation_error') {
+      if (error.type === "card_error" || error.type === "validation_error") {
         if (error.message) setMessage(error.message);
       } else {
-        setMessage('An unexpected error occurred.');
+        setMessage("An unexpected error occurred.");
       }
     } else {
-      if (paymentIntent.status === 'succeeded') {
-        
+      if (paymentIntent.status === "succeeded") {
         setShowModal(true);
         Confetti();
-        store.deleteAllProducts()
-        
+        store.deleteAllProducts();
       }
     }
 
     setIsLoading(false);
   };
 
-  const handleAceptar = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleAceptar = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     setTimeout(() => {
-      navigate('/');
+      navigate("/");
     }, 500);
   };
 
-/*   const handleDeleteChat = (e: any) => {}; */
-
-
-
   return (
-    /*  <div className="bg-white col-span-2 h-full"> */
     <form
       id="payment-form"
       onSubmit={handleSubmit}
       className="max-w-2xl h-full m-auto my-4 "
     >
-      <LinkAuthenticationElement
-        id="link-authentication-element"
-      />
-      <PaymentElement id="payment-element" options={{layout:'tabs'}} />
+      <LinkAuthenticationElement id="link-authentication-element" />
+      <PaymentElement id="payment-element" options={{ layout: "tabs" }} />
       <button
         disabled={isLoading || !stripe || !elements}
         id="submit"
         className="w-full bg-blue-700 mt-4 py-3 text-white font-semibold text-xl rounded-md"
       >
         <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : 'Pay now'}
+          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>
       </button>
       {/* Show any error or success messages */}
@@ -121,30 +113,27 @@ export default function CheckoutForm() {
       <div className=" w-screen h-screen">
         {showModal &&
           createPortal(
-            <div className="fixed z-10 inset-0 flex justify-center items-center backdrop-brightness-50 ">
-              <div className="max-w-md  m-2  bg-slate-700 shadow-lg shadow-slate-500/50 rounded-sm p-4 text-white flex flex-col sm:gap-2">
-                <p className="text-lg sm:text-xl">
-                  Felicitación, compra exitosa!!!
-                </p>
-                <p className="text-sm text-slate-500 sm:text-base">
-                  ahora estaremos procesando su solicitud, y en el tiempo
-                  establecido, el producto llegara a su hogar.😎🎉
-                </p>
-                <div className="flex justify-end gap-4 mt-4">
-                  <button
-                    onClick={handleAceptar}
-                    className="bg-blue-500   p-2 px-4 rounded-md"
-                  >
-                    Aceptar
-                  </button>
-                </div>
-              </div>
-            </div>,
-            document.getElementById('modal-mensaje')!
+            <Modal onClick={handleAceptar} />,
+            document.getElementById("modal-mensaje")!
           )}
       </div>
     </form>
-
-    /*  </div> */
   );
 }
+
+const Modal = ({ onClick }: any) => (
+  <div className="fixed z-10 inset-0 flex justify-center items-center backdrop-brightness-50 ">
+    <div className="max-w-md  m-2  bg-slate-700 shadow-lg shadow-slate-500/50 rounded-sm p-4 text-white flex flex-col sm:gap-2">
+      <p className="text-lg sm:text-xl">Felicitación, compra exitosa!!!</p>
+      <p className="text-sm text-slate-500 sm:text-base">
+        ahora estaremos procesando su solicitud, y en el tiempo establecido, el
+        producto llegara a su hogar.😎🎉
+      </p>
+      <div className="flex justify-end gap-4 mt-4">
+        <button onClick={onClick} className="bg-blue-500   p-2 px-4 rounded-md">
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </div>
+);

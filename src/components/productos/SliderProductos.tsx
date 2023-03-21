@@ -13,16 +13,16 @@ export default function SliderProductos({ title, children }: Props) {
 
   return (
     <section>
-      <div className="flex justify-between items-center px-6 py-3">
-        <h2 className="text-xl">{title}</h2>
+      <div className="flex justify-between items-center px-6 py-3 bg-neutral-100 rounded-xl">
+        <h2 className="text-xl font-bold text-slate-800">{title}</h2>
       </div>
-      <div className="relative">
+      <div className="relative py-8">
         <div className="absolute top-0 left-0 h-full flex items-center pl-4">
           <button
-            className="w-12 h-12 bg-white hover:bg-neutral-200 rounded-full flex justify-center items-center shadow-lg"
+            className="w-12 h-12 bg-rose-500 hover:bg-rose-600 rounded-full flex justify-center items-center shadow-lg"
             onClick={left}
           >
-            <img className="w-6 h-6" src="/src/assets/left.svg" alt="" />
+            <FlechaIzquierda />
           </button>
         </div>
         <div
@@ -33,13 +33,36 @@ export default function SliderProductos({ title, children }: Props) {
         </div>
         <div className="absolute top-0 right-0 h-full flex items-center pr-4">
           <button
-            className="w-12 h-12 bg-white hover:bg-neutral-200 rounded-full flex justify-center items-center shadow-lg"
+            className="w-12 h-12 bg-rose-500 hover:bg-rose-600 rounded-full flex justify-center items-center shadow-lg"
             onClick={right}
           >
-            <img className="w-6 h-6" src="/src/assets/right.svg" alt="" />
+            <FlechaDerecha />
           </button>
         </div>
       </div>
     </section>
   );
 }
+
+const FlechaIzquierda = () => (
+  <svg
+    className="fill-white"
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+  >
+    <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
+  </svg>
+);
+const FlechaDerecha = () => (
+  <svg
+    className="fill-white"
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+  >
+    <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
+  </svg>
+);

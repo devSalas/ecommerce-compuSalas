@@ -12,7 +12,7 @@ export default function ProductosSection() {
 
   return (
     <>
-      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16">
         {data?.products?.map(
           ({
             _id,

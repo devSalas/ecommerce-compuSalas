@@ -24,17 +24,18 @@ const Product = ({ product }: PropsProductCheckout) => {
         <div className="flex gap-4">
           <div className="flex justify-between items-center mx-3 border-2 border-black/40 rounded-md  ">
             <button
-              onClick={handleClickAumentar}
-              className="font-semibold text-xl px-2"
-            >
-              +
-            </button>
-            <span className="px-2 text-sm ">{product.cantidad}</span>
-            <button
               onClick={handleClickDisminuir}
               className="font-semibold text-xl px-2"
             >
               -
+            </button>
+            <span className="px-2 text-sm ">{product.cantidad}</span>
+
+            <button
+              onClick={handleClickAumentar}
+              className="font-semibold text-xl px-2"
+            >
+              +
             </button>
           </div>
           <div>

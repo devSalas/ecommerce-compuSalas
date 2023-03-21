@@ -12,7 +12,7 @@ import Products from "../pages/Products";
 
 export default function Router() {
   return (
-    <div>
+    <>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/checkout" element={<Checkout />}></Route>
@@ -24,6 +24,6 @@ export default function Router() {
         <Route path="/error" element={<Error />}></Route>
         <Route path="/products" element={<Products />}></Route>
       </Routes>
-    </div>
+    </>
   );
 }

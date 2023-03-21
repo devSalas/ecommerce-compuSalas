@@ -18,7 +18,7 @@ export default function index({
           <div>
             <p className="text-sky-500 text-sm">{category}</p>
             <h4>{title}</h4>
-            <p className="text-red-500 font-semibold">S/ {price}</p>
+            <p className="text-red-500 font-bold">S/ {price}</p>
           </div>
         </div>
       </Link>

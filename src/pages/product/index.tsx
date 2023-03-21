@@ -26,30 +26,32 @@ export default function index() {
   if (isLoading) return <LoadingProduct />;
   return (
     <>
-      <div className="max-w-7xl m-auto py-8">
-        <section className="grid md:grid-cols-2">
+      <div className="max-w-7xl m-auto px-4">
+        <section className="grid md:grid-cols-2 gap-8 py-8">
           <article className="flex justify-center h-96">
             <Image src={data?.image_url} />
           </article>
-          <article className="p-8 flex flex-col gap-4">
-            <h2 className="text-2xl">{data?.title}</h2>
-            <h2 className="">{data?.description}</h2>
-            <p className="text-xl text-red-500 font-bold">S/ {data?.price}</p>
-            <button
-              onClick={handleClick}
-              className="bg-sky-500 text-white px-4 py-2 rounded shadow hover:bg-sky-600 w-60"
-            >
-              añadir al carrito
-            </button>
-            <p>
+          <article className="">
+            <h2 className="text-3xl font-bold text-slate-800">{data?.title}</h2>
+            <h2 className="lowercase text-slate-500">{data?.description}</h2>
+            <p className="text-xl text-red-500 font-bold py-4">
+              S/ {data?.price}
+            </p>
+            <p className="text-slate-800 mb-8">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
               earum non repellendus nemo, rem culpa mollitia rerum molestiae
               laborum error? Accusantium minima officiis aliquid ex et eum fugit
               magni rem?
             </p>
+            <button
+              onClick={handleClick}
+              className="bg-sky-500 text-white py-3 w-full rounded-xl shadow hover:bg-sky-600 text-xl font-bold"
+            >
+              Añadir al carrito
+            </button>
           </article>
         </section>
-        <article className="mt-16">
+        <article className="py-8">
           <ListaSlider />
         </article>
       </div>

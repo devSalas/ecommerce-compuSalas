@@ -11,7 +11,7 @@ export default function ListaSlider() {
   if (isLoading) return <LoadingProduct />;
 
   return (
-    <div>
+    <>
       <SliderProductos title="Productos Destacados">
         {data?.products?.map(({ _id, title, price, image_url }: Product) => (
           <CardSlider
@@ -23,6 +23,6 @@ export default function ListaSlider() {
           />
         ))}
       </SliderProductos>
-    </div>
+    </>
   );
 }
