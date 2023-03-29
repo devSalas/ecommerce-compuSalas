@@ -11,16 +11,12 @@ export default function index({
   price,
 }: CardInterface) {
   return (
-    <figure className="mb-4  min-w-[16rem]">
+    <figure>
       <Link to={`/product/${id}`}>
-        <div className="flex flex-col gap-3">
-          <img className="object-contain aspect-square " src={image} />
-          <div>
-            <p className="text-sky-500 text-sm">{category}</p>
-            <h4>{title}</h4>
-            <p className="text-red-500 font-bold">S/ {price}</p>
-          </div>
-        </div>
+        <img className="object-contain aspect-square mb-1" src={image} />
+        <p className="text-sky-500 text-sm">{category}</p>
+        <h4>{title}</h4>
+        <p className="text-red-500 font-bold">S/ {price}</p>
       </Link>
     </figure>
   );

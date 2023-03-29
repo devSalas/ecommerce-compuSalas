@@ -6,13 +6,12 @@ import LoadingProduct from "./LoadingProduct";
 export default function ProductosSection() {
   //introducirle datos
   const { data, isLoading } = useProducts();
-  console.log(data);
 
   if (isLoading) return <LoadingProduct />;
 
   return (
     <>
-      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16">
+      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-16">
         {data?.products?.map(
           ({
             _id,

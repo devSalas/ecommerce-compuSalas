@@ -56,8 +56,8 @@ export default function index() {
         </article>
       </div>
       {message ? (
-        <div className="fixed bottom-10 w-full flex justify-center">
-          <div className="bg-sky-500 rounded-2xl">
+        <div className="fixed bottom-20 w-full flex justify-center">
+          <div className="bg-sky-500 rounded-2xl shadow-2xl">
             <p className="py-2 px-4 text-white">
               Producto añadido al carrito de compras
             </p>

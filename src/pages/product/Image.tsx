@@ -24,10 +24,10 @@ export default function Image({ src }: { src: string }) {
 
   return (
     <div className="flex">
-      <img onMouseMove={handleMove} className="border cursor-move" src={src}  />
-      <div className=" border relative overflow-hidden w-60 h-60">
+      <img onMouseMove={handleMove} className="border cursor-move" src={src} />
+      <div className=" border relative hidden md:block overflow-hidden w-60 h-60">
         <img
-          className="absolute cursor-move"
+          className="absolute  cursor-move"
           style={{
             scale: "300%",
             right: `${position.x}px`,

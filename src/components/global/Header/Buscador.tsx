@@ -15,16 +15,14 @@ export default function Buscador() {
         <input
           className="w-full outline-none"
           type="search"
-          name=""
-          id=""
           placeholder="buscar"
         />
-        <select className="text-slate-500 text-sm outline-none" name="" id="">
+        {/* <select className="text-slate-500 text-sm outline-none" name="" id="">
           <option value="">All Category</option>
           <option value="">computadoras</option>
           <option value="">procesadores</option>
           <option value="">rams</option>
-        </select>
+        </select> */}
       </div>
       <button className="w-16 h-10 flex justify-center items-center bg-sky-500">
         <Lupa />

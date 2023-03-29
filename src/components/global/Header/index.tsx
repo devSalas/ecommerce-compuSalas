@@ -18,11 +18,11 @@ export default function Header() {
         </section>
       </header>
 
-      <nav className="fixed z-50 md:hidden bottom-0 w-full h-16 flex items-center justify-center border bg-white">
+      <nav className="fixed z-50 bg-neutral-50 md:hidden bottom-0 w-full h-16 flex items-center justify-center border-t">
         <section className="gap-8 flex">
           <BtnHome />
           <BtnCarrito />
-          <BtnSession />
+          {/* <BtnSession /> */}
         </section>
       </nav>
     </>

@@ -17,7 +17,7 @@ export default function SliderProductos({ title, children }: Props) {
         <h2 className="text-xl font-bold text-slate-800">{title}</h2>
       </div>
       <div className="relative py-8">
-        <div className="absolute top-0 left-0 h-full flex items-center pl-4">
+        <div className="absolute top-0 left-0 h-full flex items-center">
           <button
             className="w-12 h-12 bg-rose-500 hover:bg-rose-600 rounded-full flex justify-center items-center shadow-lg"
             onClick={left}
@@ -31,7 +31,7 @@ export default function SliderProductos({ title, children }: Props) {
         >
           {children}
         </div>
-        <div className="absolute top-0 right-0 h-full flex items-center pr-4">
+        <div className="absolute top-0 right-0 h-full flex items-center">
           <button
             className="w-12 h-12 bg-rose-500 hover:bg-rose-600 rounded-full flex justify-center items-center shadow-lg"
             onClick={right}
