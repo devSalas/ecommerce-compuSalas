@@ -13,7 +13,7 @@ export default function Header() {
         <Buscador />
 
         <section className="gap-8 md:flex hidden">
-          <BtnSession />
+          {/* <BtnSession /> */}
           <BtnCarrito />
         </section>
       </header>
