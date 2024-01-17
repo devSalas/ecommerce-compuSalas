@@ -1,4 +1,5 @@
 import Card from "../../components/home/Card";
+import CardSkeleton from "../../components/home/Card/CardSqueleton";
 import { useProducts } from "../../hooks/useProduct";
 import { Product } from "../../types/types";
 import LoadingProduct from "./LoadingProduct";
