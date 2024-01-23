@@ -23,3 +23,9 @@ export interface TypeUseStore {
 	discount: number;
 	totalPrice: number;
 }
+
+
+export interface TypeQueryStore{
+	query:string,
+	setQuery:(query:string)=>void;
+}

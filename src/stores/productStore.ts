@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Product } from "../types/types";
+import { Product, TypeQueryStore } from "../types/types";
 import { TypeUseStore } from "../types/types";
 
 export const useStore = create<TypeUseStore>((set) => ({
@@ -82,3 +82,9 @@ export const useStore = create<TypeUseStore>((set) => ({
 	discount: 20,
 	totalPrice: 0,
 }));
+
+
+export const queryStore=create<TypeQueryStore>((set)=>({
+	query:"",
+	setQuery: (query)=>set(()=>({query}))
+}))
