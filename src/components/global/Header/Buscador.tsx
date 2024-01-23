@@ -22,7 +22,7 @@ export default function Buscador() {
     
     const newUrl = new URLSearchParams()
     newUrl.set("search",query)
-    window.history.pushState(null, null, '?search='+e.target.value);
+    window.history.pushState(null, "", '?search='+e.target.value);
 
     
     let searchTerm= e.target.value.trim()
