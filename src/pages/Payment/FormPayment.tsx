@@ -22,7 +22,7 @@ export default function FormPayment() {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("https://ecomerce-backend-wo0w.onrender.com/create-payment-intent", {
+    fetch(`${import.meta.env.VITE_URL_BACKEND}/create-payment-intent `, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ totalPrice, Products }),
